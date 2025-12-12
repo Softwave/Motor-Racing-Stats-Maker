@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+  <title>Motor Racing Stats Maker</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="/img/chequeredFlag.ico"/>
+  <script type="importmap">
+  {
+    "imports": {}
+  }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <h1>Motor Racing Stats Maker 🏁</h1>
+    <p>This is a little tool for generating Racing-Reference-like motor racing statistics pages. ^_^</p>
+    <p><a href="/Jimmy_Clark-stats.csv">Example driver file (Jimmy Clark).</a></p>
+    <header class="top">
+      <div class="title">
+        <label for="driverName"><p>Driver Name</p></label>
+        <input id="driverName" class="driver-name" value="Jimmy Clark" />
+        <div class="controls">
+          <button id="addRow" class="btn" title="Add season">+ Add Season</button>
+          <button id="importCsvBtn" class="btn muted" title="Import CSV">Import CSV</button>
+          <button id="exportCsv" class="btn" title="Export CSV">Export CSV</button>
+          <!-- <button id="undoBtn" class="btn muted" title="Undo last change">Undo</button>-->
+          <button id="resetBtn" class="btn muted" title="Reset driver">Reset</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="table-wrap" aria-label="Career statistics">
+      <table id="statsTable" class="stats">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Races</th>
+            <th>Wins</th>
+            <th>Poles</th>
+            <th>Podiums</th>
+            <th>Points</th>
+            <th>Rank</th>
+            <th>Del</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot>
+          <tr class="totals">
+            <td class="num" id="totalYears">0 years</td>
+            <td class="num" id="totalRaces">0</td>
+            <td class="num" id="totalWins">0</td>
+            <td class="num" id="totalPoles">0</td>
+            <td class="num" id="totalPodiums">0</td>
+            <td class="num" id="totalPoints">0</td>
+            <td class="num" id="totalChamps">0</td>
+            <td class="num"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <footer class="help">
+      Click numbers to edit</br><a href="https://s0ftwave.net/">(C) SOFTWAVE 2025</a>
+    </footer>
+
+    <input id="csvFileInput" type="file" accept=".csv" style="display:none" />
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
+
