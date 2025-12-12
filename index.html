@@ -22,7 +22,7 @@
   <main id="app">
     <h1>Motor Racing Stats Maker 🏁</h1>
     <p>This is a little tool for generating Racing-Reference-like motor racing statistics pages. ^_^</p>
-    <p><strong>Usage:</strong> Click/press numbers to edit. <strong>Also:</strong> Try this <a href="https://s0ftwave.net/Motor-Racing-Stats-Maker/Jimmy_Clark-stats.csv" target="_blank">sample driver file.</a></p>
+    <p><strong>Usage:</strong> Click/press numbers to edit. <strong>Also:</strong> Try this <a href="https://s0ftwave.net/Motor-Racing-Stats-Maker/Jimmy_Clark-stats.csv">sample driver file.</a></p>
 
     <header class="top">
       <div class="title">
@@ -34,6 +34,7 @@
           <button id="exportCsv" class="btn" title="Export CSV">Export CSV</button>
           <!-- <button id="undoBtn" class="btn muted" title="Undo last change">Undo</button>-->
           <button id="resetBtn" class="btn muted" title="Reset driver">Reset</button>
+          <button id="changeModeBtn" class="btn" title="Toggle Mode">Toggle Mode</button>
         </div>
       </div>
     </header>
@@ -46,8 +47,8 @@
             <th>Races</th>
             <th>Wins</th>
             <th>Poles</th>
-            <th>Podiums</th>
-            <th>Points</th>
+            <th id="podiumsLabel">Podiums</th>
+            <th id="pointsLabel">Points</th>
             <th>Rank</th>
             <th>Del</th>
           </tr>

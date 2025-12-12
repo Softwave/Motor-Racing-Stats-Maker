@@ -12,6 +12,7 @@ const importBtn = document.getElementById('importCsvBtn');
 const fileInput = document.getElementById('csvFileInput');
 //const undoBtn = document.getElementById('undoBtn');
 const resetBtn = document.getElementById('resetBtn');
+const changeModeBtn = document.getElementById('changeModeBtn');
 const driverNameInput = document.getElementById('driverName');
 const totals = {
   races: document.getElementById('totalRaces'),
@@ -31,6 +32,7 @@ let history = [];
 const SAMPLE = [];
 
 const STORAGE_KEY = 'racing_stats_v1';
+const MODE_KEY = 'racing_stats_mode'; // new key for mode
 
 function saveState(pushHistory = true) {
   if(pushHistory){
@@ -299,13 +301,32 @@ fileInput.addEventListener('change', (e) => {
 });
 //undoBtn.addEventListener('click', undo);
 driverNameInput.addEventListener('change', () => saveState(false));
-if(resetBtn){
+if(resetBtn) {
   resetBtn.addEventListener('click', () => {
     driverNameInput.value = '';
     rows = [];
     history = [];
     saveState(false);
     render();
+  });
+}
+
+if(changeModeBtn) {
+  // Make #totalPodiums toggle between saying "Podiums" and "Top 5s"
+  // This way it works for both things like NASCAR and F1!
+  let showingPodiums = true;
+  // Load mode from localStorage if present
+  const savedMode = localStorage.getItem(MODE_KEY);
+  if(savedMode === 'top5s') {
+    showingPodiums = false;
+    document.getElementById('podiumsLabel').textContent = 'Top 5s';
+  }
+  changeModeBtn.addEventListener('click', () => {
+    showingPodiums = !showingPodiums;
+    document.getElementById('podiumsLabel').textContent = showingPodiums ? 'Podiums' : 'Top 5s';
+    document.getElementById('pointsLabel').textContent = showingPodiums ? 'Points' : 'Top 10s';
+    localStorage.setItem(MODE_KEY, showingPodiums ? 'podiums' : 'top5s');
+    recomputeTotals();
   });
 }
 
